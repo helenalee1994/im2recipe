@@ -117,16 +117,14 @@ Training word2vec with recipe data:
 
 - Run ```python tokenize_instructions.py train``` to create a single file with all training recipe text.
 - Run the same ```python tokenize_instructions.py``` to generate the same file with data for all partitions (needed for skip-thoughts later).
-- Download and compile [word2vec](https://storage.googleapis.com/google-code-archive-source/v2/code.google.com/word2vec/source-archive.zip)
-
-### to compile: go to the word2vec.c, and then make word2vec
+- Download and compile [word2vec](https://storage.googleapis.com/google-code-archive-source/v2/code.google.com/word2vec/source-archive.zip) ### to compile: create a directory outside im2recipe, go to the word2vec.c, and then make word2vec
 - Train with:
 
 ```
 ./word2vec -hs 1 -negative 0 -window 10 -cbow 0 -iter 10 -size 300 -binary 1 -min-count 10 -threads 20 -train tokenized_instructions_train.txt -output vocab.bin
 ```
 
-- Run ```python get_vocab.py vocab.bin``` to extract dictionary entries from the w2v binary file. This script will save ```vocab.txt```, which will be used to create the dataset later.
+- Run ```python get_vocab.py vocab.bin``` to extract dictionary entries from the w2v binary file. This script will save ```vocab.txt```, which will be used to create the dataset later. ### remember to go back to pyscripts
 - Move ```vocab.bin``` and ```vocab.txt``` to ```./data/text/```.
 
 ### Skip-instructions

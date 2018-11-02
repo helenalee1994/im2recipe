@@ -50,11 +50,11 @@ luarocks install nn
 luarocks install image
 luarocks install optim
 luarocks install rnn
-luarocks install loadcaffe
+luarocks install loadcaffe ### I failed here
 luarocks install moonscript
 ```
 
-Install CUDA and cudnn. Then run:
+Install CUDA and cudnn. Then run: ### I ignored, not interested in image model
 
 ```
 luarocks install cutorch
@@ -111,13 +111,15 @@ We provide the script we used to extract semantic categories from bigrams in rec
 
 These steps will create a file called ```classes1M.pkl``` in ```./data/``` that will be used later to create the HDF5 file including categories.
 
-### Word2Vec
+### Word2Vec # need to prepare degt.json, layer1, layer2, put them under data/recipe1M
 
 Training word2vec with recipe data:
 
 - Run ```python tokenize_instructions.py train``` to create a single file with all training recipe text.
 - Run the same ```python tokenize_instructions.py``` to generate the same file with data for all partitions (needed for skip-thoughts later).
 - Download and compile [word2vec](https://storage.googleapis.com/google-code-archive-source/v2/code.google.com/word2vec/source-archive.zip)
+
+### to compile: go to the word2vec.c, and then make word2vec
 - Train with:
 
 ```
